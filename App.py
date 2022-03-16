@@ -1,5 +1,5 @@
 #import Planner
-#import Renderer
+import Renderer
 
 import Tool
 import Plan
@@ -8,6 +8,7 @@ import Analyzer
 import numpy as np
 
 worldSize = [ 100, 100 ]
+img_scale = 10
 
 blockSize = [ 30, 30 ]
 
@@ -29,6 +30,6 @@ path.edge_order = [
 
 analyzer = Analyzer.Analyzer(tool, world)
 
-times = analyzer.getScore(path)
+times = analyzer.get_times(path)
 
-#Renderer.render(times, path)
+Renderer.render(times, path, img_scale, worldSize)

@@ -41,7 +41,7 @@ class Analyzer:
         return times
             
     def travel_edge(self, edge, tool):
-        travel_times = 0
+        travel_times = {}
         
         start = edge[0]
         end = edge[1]
@@ -72,7 +72,11 @@ class Analyzer:
             if tool.speed > Config.MAX_SPEED:
                 tool.speed = Config.MAX_SPEED
             
-            travel_times[(sample_now, sample_next)] += d / tool.speed
+            t_now = tuple(sample_now)
+            t_next = tuple(sample_next)
+            t_key = (t_now, t_next)
+            
+            travel_times[t_key] = d / tool.speed
         
         return travel_times
     
